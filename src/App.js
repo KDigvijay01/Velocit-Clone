@@ -38,15 +38,22 @@ function App() {
     <LocomotiveScrollProvider
     options={{
       smooth: true,
-    }}
+       // ... all available Locomotive Scroll instance options
+       smartphone: {
+              smooth: true,
+            },
+            tablet: {
+              smooth: true,
+            },
+          }}
     watch={[]}
     containerRef={containerRef}
     >
     <AnimatePresence>{Loaded ? null : <Loader />}</AnimatePresence>
     <main data-scroll-container className="app" ref={containerRef} >
         <ScrollTriggerProxy/>
-        <AnimatePresence mode="wait">
-        {Loaded ? null : <Loader />}
+        <AnimatePresence >
+        {/* {Loaded ? null : <Loader />} */}
             <Home key="home" />
             <About ke="about" />
             <Shop key="shop" />

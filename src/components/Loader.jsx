@@ -8,20 +8,16 @@ const Container = styled(motion.div)`
   left: 0;
   right: 0;
   bottom: 0;
-touch-action: none;
-overflow: hidden;
+  touch-action: none;
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
-
   z-index: 6;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background-color: black;
-
   width: 100%;
 
   @media (max-width: 48em) {
@@ -44,6 +40,7 @@ overflow: hidden;
     }
   }
 `;
+  
 
 const pathVariants = {
   hidden: {
@@ -70,8 +67,8 @@ const textVariants = {
 
     transition: {
       duration: 1,
-      // yoyo: Infinity,
-      repeatType: 'fade',
+      yoyo: Infinity,
+      // repeatType: 'fade',
       ease: 'easeInOut',
     },
   },
@@ -91,9 +88,10 @@ const Text = styled(motion.span)`
 const Loader = () => {
   return (
     <Container
-      initial={{ y: 0, opacity: 1 }}
-      exit={{ y: "100%", opacity: 0}}
-      transition={{ duration: 2 }}
+      initial={{y: 0, opacity: 1, }}
+      // animate={{ y: "100%", opacity: 0, zIndex: 0}}
+      exit={{ y: "100%", opacity: 0, }}
+      transition={{ duration: 2 , }}
     >
       {/* <img src={star} alt="Wibe Fashion" /> */}
       {/* <svg
@@ -153,23 +151,25 @@ const Loader = () => {
             clip-path="url(#clipA)"
           />
 
-          <motion.path
-           variants={pathVariants}
-              initial="hidden"
-              animate="visible"
-            d="M50 30 L75 100 L100 30"
-            stroke="url(#gradient1)"
-            stroke-width="8"
-            fill="none"
-            stroke-linejoin="round"
-            stroke-linecap="round"
-          />
+        
           <motion.path
            variants={pathVariants}
               initial="hidden"
               animate="visible"
             d="M50 100 L75 30 L100 100"
             stroke="url(#gradient2)"
+            stroke-width="8"
+            fill="none"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
+
+        <motion.path
+           variants={pathVariants}
+              initial="hidden"
+              animate="visible"
+            d="M50 30 L75 100 L100 30"
+            stroke="url(#gradient1)"
             stroke-width="8"
             fill="none"
             stroke-linejoin="round"

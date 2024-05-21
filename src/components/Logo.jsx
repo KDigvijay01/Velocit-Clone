@@ -119,23 +119,26 @@ const Logo = () => {
             clip-path="url(#clipA)"
           />
 
-          <motion.path
-           variants={pathVariants}
-              initial="hidden"
-              animate="visible"
-            d="M50 30 L75 100 L100 30"
-            stroke="url(#gradient1)"
-            stroke-width="8"
-            fill="none"
-            stroke-linejoin="round"
-            stroke-linecap="round"
-          />
+         
           <motion.path
            variants={pathVariants}
               initial="hidden"
               animate="visible"
             d="M50 100 L75 30 L100 100"
             stroke="url(#gradient2)"
+            stroke-width="8"
+            fill="none"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
+
+
+          <motion.path
+           variants={pathVariants}
+              initial="hidden"
+              animate="visible"
+            d="M50 30 L75 100 L100 30"
+            stroke="url(#gradient1)"
             stroke-width="8"
             fill="none"
             stroke-linejoin="round"
