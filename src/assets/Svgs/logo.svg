@@ -1,0 +1,57 @@
+<svg
+          width="120"
+          height="120"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+        >
+          <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(114, 10, 8, 1)" />
+              <stop offset="100%" stop-color="rgba(178, 152, 40, 0.99)" />
+            </linearGradient>
+
+            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(132, 73, 32, 1)" />
+              <stop offset="100%" stop-color="rgba(40, 40, 178, 0.99)" />
+            </linearGradient>
+
+            <clipPath id="clipV">
+              <path d="M50 30 L75 100 L100 30" />
+            </clipPath>
+
+            <clipPath id="clipA">
+              <path d="M50 100 L75 30 L100 100" />
+            </clipPath>
+          </defs>
+
+          <rect
+            width="400"
+            height="400"
+            stroke="url(#gradient1)"
+            clip-path="url(#clipV)"
+          />
+          <rect
+            width="400"
+            height="400"
+            stroke="url(#gradient2)"
+            clip-path="url(#clipA)"
+          />
+
+          <path
+            d="M50 30 L75 100 L100 30"
+            stroke="url(#gradient1)"
+            stroke-width="10"
+            fill="none"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
+          <path
+
+            d="M50 100 L75 30 L100 100"
+            stroke="url(#gradient2)"
+            stroke-width="10"
+            fill="none"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
+        </svg>
