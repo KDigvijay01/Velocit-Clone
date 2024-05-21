@@ -83,7 +83,7 @@ const Title = styled.h1`
   text-shadow: 1px 1px 1px ${(props) => props.theme.body};
 
   position: absolute;
-  top: 1rem;
+  top: 0.5rem;
   left: 5%;
   z-index: 11;
 
@@ -191,9 +191,7 @@ const ItemVariant={
           mass: 0.7,
           stiffness: 100,
           damping: 15,
-          precision: 0.01,
-          velocity: 0.7,
-         ease: "easeIn"
+          ease: "easeIn"
       }
   },
   exit:{
@@ -268,6 +266,11 @@ const divVariants={
       staggerChildren: 0.07,
     },
   },
+
+  exit:{
+    opacity: 0.3,
+    x: -100,
+  },
 }
 
 
@@ -285,9 +288,11 @@ const divVariantsTwo={
       damping: 20,
       when: "beforeChildren",
       staggerChildren: 0.04,
-      delay: 0.5,
+      delay: 0.1,
     },
   },
+
+  exit: {  opacity: 0.2, x: 100, },
 }
 
 
@@ -309,8 +314,11 @@ const textVariantsTwo={
     stiffnes: 50,
     damping: 10,
     ease: "easeInOut",
+  } 
+},
 
-  } },
+exit: { opacity: 0.3, y: -50 },
+
 }
 
 
@@ -395,7 +403,7 @@ const Shop = () => {
 
   return (
     <Section ref={ref} id="shop">
-      <Title data-scroll data-scroll-speed="-1">
+      <Title data-scroll data-scroll-speed="-0.5">
         Our Services
       </Title>
       <Left>
@@ -404,6 +412,8 @@ const Shop = () => {
             initial="initial"
             ref={textRef}
             animate={activeImage ? "animate" : ""}
+            exit="exit"
+            onEndedCapture="exit"
       // whileInView={handleView}
         // viewport={{
         //   once: false,
