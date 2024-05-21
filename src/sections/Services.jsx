@@ -245,7 +245,7 @@ const divVariants={
       stiffness: 50,
       damping: 8,
       when: "beforeChildren",
-      staggerChildren: 0.07,
+      staggerChildren: 0.018,
     },
   },
 
@@ -269,8 +269,8 @@ const divVariantsTwo={
       stiffness: 50,
       damping: 8,
       when: "beforeChildren",
-      staggerChildren: 0.04,
-      delay: 0.1,
+      staggerChildren: 0.02,
+      delay: 0.07,
     },
   },
 
@@ -375,7 +375,9 @@ const Shop = () => {
       <Title data-scroll data-scroll-speed="-0.5">
         Our Services
       </Title>
-      <Left>
+      <Left
+      
+      >
           <motion.div
             variants={divVariants}
             initial="initial"
