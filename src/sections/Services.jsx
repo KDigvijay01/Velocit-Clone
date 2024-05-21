@@ -188,10 +188,10 @@ const ItemVariant={
       scale: 1.5,
       transition: {
           type:"spring",
-          mass: 0.7,
-          stiffness: 100,
-          damping: 15,
-          ease: "easeIn"
+          mass: 0.3,
+          stiffness: 50,
+          damping: 8,
+          ease: "easeInOut"
       }
   },
   exit:{
@@ -199,12 +199,9 @@ const ItemVariant={
     scale: 0.95,
   }
 }
-//data-scroll data-scroll-speed="-2" data-scroll-direction="horizontal"
+
+
 const Product = ({ item, index, updateActiveImage}) => {
-  
-  const control= useAnimation();
-
-
   const ref = useRef(null);
 
   const onScreen = useOnScreen(ref, 0.5);
@@ -215,31 +212,16 @@ const Product = ({ item, index, updateActiveImage}) => {
     }
   }, [onScreen, index]);
 
- 
-
-
-
-  const handleExit = () => {
-    control.start({
-      filter: "grayscale(100%)",
-      scale: 0.95,
-    })
-  }
-
-
-
-
   return (
-    // x: 100, y: -100
     <Item
       initial="initial"
-      animate={onScreen ? "animate" : ""}
-      // whileInView={handleView}
+      animate={onScreen ? "animate" : false}
       viewport={{
          once: false,
          amount: "all",
+         threshold: 0.5,
       }}
-      // exit="exit"
+      exit="exit"
       variants={ItemVariant}
       key={item.id}
       ref={ref}
@@ -260,8 +242,8 @@ const divVariants={
     x: 0,
     transition: {
       type: "spring",
-      stiffness: 100,
-      damping: 30,
+      stiffness: 50,
+      damping: 8,
       when: "beforeChildren",
       staggerChildren: 0.07,
     },
@@ -284,8 +266,8 @@ const divVariantsTwo={
     x: 0,
     transition: {
       type: "spring",
-      stiffness: 100,
-      damping: 20,
+      stiffness: 50,
+      damping: 8,
       when: "beforeChildren",
       staggerChildren: 0.04,
       delay: 0.1,
@@ -301,7 +283,7 @@ const textVariants={
   animate: { opacity: 1, y: 0, transition:{
     type: "spring",
     stiffnes: 50,
-    damping: 10,
+    damping: 8,
     ease: "easeInOut",
 
   } },
@@ -311,8 +293,8 @@ const textVariantsTwo={
   initial: { opacity: 0.3, y: -50 },
   animate: { opacity: 1, y: 0, transition:{
     type: "spring",
-    stiffnes: 50,
-    damping: 10,
+    stiffness: 50,
+    damping: 8,
     ease: "easeInOut",
   } 
 },
@@ -328,20 +310,8 @@ const Shop = () => {
 
   const [activeImage, setActiveImage] = useState(1);
   const ref = useRef(null);
-
   const textRef= useRef(null);
-
-  const control= useAnimation();
-
   const horizontalRef = useRef(null);
-
-  const onScreen = useOnScreen(textRef, 0.5);
-
-    useEffect(() => {
-    if (onScreen) {
-      // updateActiveText(activeImage);
-    }
-  }, [onScreen, activeImage]);
 
 
 
@@ -352,7 +322,6 @@ const Shop = () => {
     let scrollingElement = horizontalRef.current;
 
     let pinWrapWidth = scrollingElement.offsetWidth;
-    console.log("pinwrapWidth", pinWrapWidth, scrollingElement.scrollWidth);
 
     let t1 = gsap.timeline();
     setTimeout(() => {
@@ -415,10 +384,11 @@ const Shop = () => {
             exit="exit"
             onEndedCapture="exit"
       // whileInView={handleView}
-        // viewport={{
-        //   once: false,
-        //   amount: "all",
-        // }}
+        viewport={{
+          once: false,
+          amount: "all",
+          threshold: 0.5,
+        }}
             key={activeImage+1}
           >
           <motion.h2 variants={divVariants} key={activeImage}>
@@ -449,14 +419,6 @@ const Shop = () => {
      
       </Left>
       <Right data-scroll ref={horizontalRef}>
-        {/* <Product img={img4} title="Ethnic Wear" />
-        <Product img={img1} title="Man Basics" />
-        <Product img={img2} title="Tops" />
-        <Product img={img5} title="Blazers" />
-        <Product img={img6} title="Suits" />
-        <Product img={img7} title="Antiques" />
-        <Product img={img8} title="Jewellery" />
-        <Product img={img9} title="Watches" /> */}
         {data.map((it, index)=>(
           <Product  item={it} index={index} updateActiveImage={handleUpdateActiveImage}/>
         ))
