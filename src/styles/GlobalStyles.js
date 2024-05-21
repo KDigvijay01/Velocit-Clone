@@ -13,6 +13,7 @@ html.has-scroll-smooth{
     right: 0;
     top: 0;
     bottom: 0;
+    scroll-behaviour: smooth;
 }
 
 *, *::before, *::after{
@@ -20,12 +21,14 @@ html.has-scroll-smooth{
     padding: 0;
 }
 
+html{
+    scroll-behaviour: smooth;
+}
 
 body{
     font-family: "Sirin Stencil";
     overflow-x: hidden;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    touch-action: pan-y
+    scroll-behaviour: smooth;
 }
 
 h1, h2, h3, h4, h5, h6{
