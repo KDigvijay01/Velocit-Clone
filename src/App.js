@@ -8,9 +8,9 @@ import { ThemeProvider } from "styled-components";
 import { dark } from "./styles/Themes";
 import Home from "./sections/Home";
 import About from "./sections/About";
-import Shop from "./sections/Shop";
+import Shop from "./sections/Services";
 import Marquee from "./sections/Marquee";
-import NewArrival from "./sections/NewArrival";
+import NewArrival from "./sections/Serve";
 import Footer from "./sections/Footer";
 import Loader from "./components/Loader";
 
