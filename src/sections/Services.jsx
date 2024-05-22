@@ -136,6 +136,11 @@ const Left = styled.div`
     p {
       font-size: ${(props) => props.theme.fontsm};
     }
+
+    .topicTitle{
+    font-size: 1.5em;
+    line-height: 1.3em;
+    }
   }
   @media (max-width: 30em) {
     p {
@@ -270,7 +275,6 @@ const divVariantsTwo={
       damping: 8,
       when: "beforeChildren",
       staggerChildren: 0.02,
-      delay: 0.07,
     },
   },
 
@@ -304,6 +308,32 @@ exit: { opacity: 0.3, y: -50 },
 }
 
 
+const loaderVariants={
+  initial:{
+    opacity: 0.3,
+  },
+  animate:{
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 50,
+      damping: 8,
+      ease: "easeInOut",
+      yoyo: Infinity,
+    }
+  },
+  exit:{
+    opacity: 0,
+    transition: {
+      type: "spring",
+      stiffness: 50,
+      damping: 8,
+      ease: "easeInOut",
+    }
+  }
+}
+
+
 const Shop = () => {
   gsap.registerPlugin(ScrollTrigger);
   const { scroll } = useLocomotiveScroll();
@@ -313,7 +343,7 @@ const Shop = () => {
   const textRef= useRef(null);
   const horizontalRef = useRef(null);
 
-
+  const [loader, setLoader] = useState(false)
 
 
 
@@ -367,7 +397,11 @@ const Shop = () => {
 
 
   const handleUpdateActiveImage = (index) => {
-    setActiveImage(index + 1);
+    setLoader(true);
+    setTimeout(() => {
+      setActiveImage(index + 1);
+      setLoader(false);
+    }, 500);
   };
 
   return (
@@ -378,6 +412,7 @@ const Shop = () => {
       <Left
       
       >
+          {loader ? <motion.p variants={loaderVariants}>...</motion.p> :(
           <motion.div
             variants={divVariants}
             initial="initial"
@@ -393,7 +428,7 @@ const Shop = () => {
         }}
             key={activeImage+1}
           >
-          <motion.h2 variants={divVariants} key={activeImage}>
+          <motion.h2 variants={divVariants} key={activeImage} className="topicTitle">
             {data[activeImage-1].title.split("").map((el, id)=>(
               <motion.span variants={textVariants}>{el}</motion.span>
             ))}
@@ -417,7 +452,7 @@ const Shop = () => {
 
         </motion.p>
           </motion.div>
-       
+       )}
      
       </Left>
       <Right data-scroll ref={horizontalRef}>
